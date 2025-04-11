@@ -4,7 +4,7 @@ from PIL import Image
 import pillow_avif
 
 st.set_page_config(
-    page_title="「万物速朽」避难所", 
+    page_title="Meteor-a", 
     page_icon="favicon_black_x128.ico", 
     initial_sidebar_state="expanded", 
     menu_items={

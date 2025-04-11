@@ -3,6 +3,15 @@ import os
 from PIL import Image
 import pillow_avif
 
+st.set_page_config(
+    page_title="「万物速朽」避难所", 
+    page_icon="favicon_black_x128.ico", 
+    initial_sidebar_state="expanded", 
+    menu_items={
+        'About': '「个人消费文明史」简单实例'
+    }
+    )
+
 # 读取配置文件
 def read_config_txt(config_path):
     config = {}

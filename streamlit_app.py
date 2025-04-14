@@ -70,7 +70,7 @@ def main():
                 else:
                     st.error(f"文件 {file} 不存在")
         else:
-            st.error(f"未找到对应的文件夹: {folder_path}")
+            st.error("它已经永久的遗失了。:(")
     else:
         st.error("未找到对应的配置信息")
 

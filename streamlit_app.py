@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 from PIL import Image
-# import pillow_avif
+import pillow_avif
 
 st.set_page_config(
     page_title="Meteor-a", 

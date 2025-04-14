@@ -2,15 +2,23 @@ import streamlit as st
 import os
 from PIL import Image
 import pillow_avif
+import base64
+from io import BytesIO
 
 st.set_page_config(
-    page_title="Meteor-a", 
+    page_title="StyxSave", 
     page_icon="favicon_black_x128.ico", 
     initial_sidebar_state="expanded", 
     menu_items={
         'About': '「个人消费文明史」简单实例'
     }
     )
+
+def image_to_base64(img):
+    buffered = BytesIO()
+    img.save(buffered, format="PNG")
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+    return img_str
 
 # 读取配置文件
 def read_config_txt(config_path):
@@ -63,8 +71,17 @@ def main():
                 if os.path.exists(file):
                     try:
                         # 直接使用 Pillow 打开图像进行测试
-                        img = Image.open(file)
-                        st.image(img, use_container_width=True)
+                        # img = Image.open(file)
+                        # st.image(img, use_container_width=True)
+                        # 打开 AVIF 图片
+                        image = Image.open(file)
+
+                        # 定义包含边框样式的 HTML 模板，边框宽度设为 0
+                        border_style = "border: 0px solid #008CBA; border-radius: 0px; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);"
+                        html_template = f'<img src="data:image/png;base64,{image_to_base64(image)}" style="{border_style}">'
+
+                        # 将 HTML 代码写入 Streamlit 应用
+                        st.markdown(html_template, unsafe_allow_html=True)
                     except Exception as e:
                         st.error(f"无法显示图像 {file}: {e}")
                 else:

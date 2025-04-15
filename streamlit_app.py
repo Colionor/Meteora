@@ -8,7 +8,7 @@ from io import BytesIO
 st.set_page_config(
     page_title="StyxSave", 
     page_icon="favicon_black_x128.ico", 
-    initial_sidebar_state="expanded", 
+    # initial_sidebar_state="expanded", 
     menu_items={
         'About': '「个人消费文明史」简单实例'
     }
